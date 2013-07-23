@@ -1,5 +1,8 @@
 %h2 All Quizzes
 
+- @quzzes.each do |quiz|
+	= quiz.name
+
 
 
 = link_to "New Quiz", new_quiz_path

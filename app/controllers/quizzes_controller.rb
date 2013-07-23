@@ -2,13 +2,6 @@ class QuizzesController < ApplicationController
 
 	def new
 		@quiz = Quiz.new
-		# @question = @quiz.questions.build
-		# @question.quiz_id = @quiz.id
-		# @answer = @question.answers.build
-		# @question.save
-		# @answer.save
-		question = @quiz.questions.build
-		4.times { question.answers.build }
 	end
 
 	def create
