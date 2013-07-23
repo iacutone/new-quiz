@@ -1,0 +1,10 @@
+= f.label "Question"
+= f.hidden_field :quiz_id, :value => @quiz.id
+= f.text_area :content, { cols: 50, rows: 2 }
+%br
+= f.check_box :_destroy
+= f.label :_destroy, "Remove Question"
+%br
+= fields_for :answer do |builder|
+		= render 'answer_fields', f: builder
+%br	

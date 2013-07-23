@@ -1,0 +1,7 @@
+= @quiz.name
+- @quiz.questions.each do |question|
+	= link_to question.content, question
+
+	%br
+= link_to "Edit", edit_quiz_path(@quiz)
+= link_to "All Quizzes", quizzes_path

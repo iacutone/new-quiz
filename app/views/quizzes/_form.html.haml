@@ -1,0 +1,12 @@
+= form_for @quiz do |f|
+	= f.label "Quiz Name"
+	= f.text_field :name
+
+	%br
+
+	= fields_for :questions do |builder|
+		= render 'question_fields', f: builder	
+
+	%br
+
+	= f.submit
