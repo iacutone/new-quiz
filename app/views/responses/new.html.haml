@@ -9,7 +9,6 @@
 			= f.label "Answer Choice"
 			= f.radio_button(:content, answer.content)
 			%br
-		= f.hidden_field :score, :value => f.number_correct
 		= f.hidden_field :quiz_id, :value => @quiz.id
 		= f.hidden_field :user_id, :value => current_user.id
 		%br

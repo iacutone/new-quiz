@@ -7,6 +7,7 @@ class UsersController < ApplicationController
 	def create
 		@user = User.new(params[:user])
 		if @user.save
+			session[:user_id] = @user.id
 			@quiz = Quiz.new
 			render 'quizzes/new'
 		else 
