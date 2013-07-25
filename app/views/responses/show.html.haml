@@ -1,1 +1,14 @@
-show.html.haml
+%br
+= @response.quiz.name
+%br
+= @response[:content]
+%br
+- @response.quiz.questions.each do |question|
+	- question.answers.each do |answer|
+		= answer.content
+		= answer.is_correct
+		%br
+= @response.number_of_questions
+
+= @response.dfin
+

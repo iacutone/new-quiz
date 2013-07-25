@@ -11,6 +11,4 @@
 class Quiz < ActiveRecord::Base
 	attr_accessible :name, :questions_attributes
 	has_many :questions
-	has_many :responses
-	# belongs_to :user
 end

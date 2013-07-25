@@ -1,6 +1,7 @@
 class ResponsesController < ApplicationController
 
 	def new
+		# @user = User.find(params[:user_id])
 		@quiz = Quiz.find(params[:quiz_id])
 		@response = Response.new
 	end
@@ -12,5 +13,9 @@ class ResponsesController < ApplicationController
     else
       render :new
     end
+	end
+
+	def show
+		@response = Response.find(params[:id])
 	end
 end
