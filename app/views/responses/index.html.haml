@@ -1,1 +1,11 @@
-response/index
+%h2 Students Index
+- @responses.each do |response|
+	= response.user.name
+	Grade:
+	= response.number_correct
+	\/
+	= response.number_of_questions
+	= link_to "Back", response_path(response)
+	%br
+
+

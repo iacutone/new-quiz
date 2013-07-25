@@ -12,8 +12,11 @@ Your Answer:
 		= answer.is_correct
 		%br
 Grade:
-= @response.number_of_questions
-\/
 = @response.number_correct
+\/
+= @response.number_of_questions
+%br
+
+= link_to "All Student Scores", responses_path
 
 
