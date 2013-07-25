@@ -20,5 +20,15 @@ class Response < ActiveRecord::Base
     @total_questions = self.quiz.questions.size
   end
 
-
+  def number_correct
+    i = 0
+  	self.quiz.questions.each do |question|
+      question.answers.each do |answer|
+        if self[:content] == answer.content && answer.is_correct == true
+          i += 1
+        end
+      end
+  	end
+    return i
+  end
 end

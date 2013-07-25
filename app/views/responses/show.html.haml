@@ -1,14 +1,19 @@
 %br
 = @response.quiz.name
 %br
+Your Answer:
 = @response[:content]
 %br
 - @response.quiz.questions.each do |question|
+	= question.content
+	%br
 	- question.answers.each do |answer|
 		= answer.content
 		= answer.is_correct
 		%br
+Grade:
 = @response.number_of_questions
+\/
+= @response.number_correct
 
-= @response.dfin
 
