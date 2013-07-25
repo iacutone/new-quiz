@@ -1,3 +1,4 @@
+
 Quiz:
 = @quiz.name
 
@@ -12,6 +13,8 @@ Quiz:
 		= f.fields_for :answers do |builder|
 			= builder.label :content, "Answer"
 			= builder.text_field :content
+			= builder.label "Correct answer?"
+			= builder.check_box :is_correct
 		%br
 	= link_to_add_fields "Add an answer", f, :answers
 	%br

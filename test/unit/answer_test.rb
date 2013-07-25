@@ -7,6 +7,7 @@
 #  question_id :integer
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  is_correct  :boolean          default(FALSE)
 #
 
 require 'test_helper'

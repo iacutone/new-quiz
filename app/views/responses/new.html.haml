@@ -1,0 +1,14 @@
+= @quiz.name
+%br
+= form_for @response do |f|	
+	- @quiz.questions.each do |question|
+		= question.content
+		%br
+		- question.answers.each do |answer|
+			= answer.content
+			%br
+		= f.hidden_field :user_id, value: @quiz.id
+		= f.label :content, "Your Answer Choice"
+		= f.text_field :content
+		%br
+	= f.submit "Submit"

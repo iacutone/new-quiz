@@ -27,10 +27,16 @@ class QuizzesController < ApplicationController
 	end
 
 	def index
-		@quzzes = Quiz.all
+		@quizzes = Quiz.all
 	end
 
 	def edit
 		@quiz = Quiz.find(params[:id])
+	end
+
+	def destroy
+		@quiz = Quiz.find(params[:id])
+		@quiz.destroy
+		redirect_to quizzes_path
 	end
 end
