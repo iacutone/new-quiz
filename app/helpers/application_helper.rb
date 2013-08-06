@@ -8,4 +8,14 @@ module ApplicationHelper
 		end
 		link_to(name, '#', class: 'add_fields', data: { id: id, fields: fields.gsub('\n', '' )})
 	end
+
+	def link_to_add_response(name, builder, association)
+		new_object = Response.create
+		fields = new_object
+		id = new_object.id
+		# fields = builder.fields_for(association, new_object, child_index: id) do |builder|
+		render("response_fields")
+		# end
+		link_to(name, '#', class: 'add_fields', data: { id: id, fields: fields})
+	end
 end

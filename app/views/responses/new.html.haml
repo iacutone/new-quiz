@@ -6,10 +6,13 @@
 		%br
 		- question.answers.each do |answer|
 			= answer.content
-			= f.label "Answer Choice"
-			= f.radio_button(:content, answer.content)
 			%br
-		= f.hidden_field :quiz_id, :value => @quiz.id
-		= f.hidden_field :user_id, :value => current_user.id
-		%br
+				= link_to "Add", '', class: '.add_fields'
+				= f.label "Correct Answer"
+				= f.check_box :content, value: answer.content
+				= f.hidden_field :quiz_id, :value => @quiz.id
+				= f.hidden_field :user_id, :value => current_user.id
+	
 	= f.submit "Submit"
+
+
