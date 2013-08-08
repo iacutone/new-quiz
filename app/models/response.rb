@@ -2,20 +2,27 @@
 #
 # Table name: responses
 #
-#  id         :integer          not null, primary key
-#  user_id    :integer
-#  quiz_id    :integer
-#  content    :string(255)
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  score      :integer
+#  id          :integer          not null, primary key
+#  user_id     :integer
+#  quiz_id     :integer
+#  content     :string(255)
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  score       :integer
+#  answer_id   :integer
+#  question_id :integer
 #
 
 class Response < ActiveRecord::Base
-  attr_accessible :quiz_id, :content, :user_id
+  attr_accessible :quiz_id, :content, :user_id, :answer_id, :question_id
 
   belongs_to :user
   belongs_to :quiz
+  belongs_to :answer
+
+  def content_displayer
+    self
+  end
 
   def number_of_questions
     @total_questions = self.quiz.questions.size

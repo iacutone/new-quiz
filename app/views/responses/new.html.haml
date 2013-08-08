@@ -7,12 +7,16 @@
 		- question.answers.each do |answer|
 			= answer.content
 			%br
-				= link_to "Add", '', class: '.add_fields'
-				= f.label "Correct Answer"
-				= f.check_box :content, value: answer.content
-				= f.hidden_field :quiz_id, :value => @quiz.id
-				= f.hidden_field :user_id, :value => current_user.id
-	
+			.show_questions
+				= Response.new do |q|
+					= f.label "Correct Answer?"
+					= f.check_box q.result
+					= f.hidden_field q.quiz_id, :value => @quiz.id
+					= f.hidden_field params[:user_id], :value => current_user.id
+					= f.hidden_field params[:question_id], :value => question.id
+					= f.hidden_field q.answer_id, :value => answer.id
+		
 	= f.submit "Submit"
+
 
 

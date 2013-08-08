@@ -6,12 +6,13 @@ class ResponsesController < ApplicationController
 	end
 
 	def create
-		@response = Response.new(params[:response])
-		if @response.save
-      render :show
-    else
-      render :new
-    end
+		quiz_result = []
+		@responses = params[:response]
+		binding.pry
+		quiz_result << @responses[0..5]
+		quiz_result.flatten
+		
+		render :show
 	end
 
 	def show
@@ -34,3 +35,18 @@ end
 # [7/30/13 2:22:20 PM] Blake Johnson: and which user is taking the quiz
 # [7/30/13 2:22:54 PM] Blake Johnson: question
 # [7/30/13 2:22:56 PM] Blake Johnson: one answer
+
+#   @article = Article.new(
+#   :huff_link => huff_link,
+#   :huff_title => huff_title,
+#   :nytimes_link => nytimes_link,
+#   :nytimes_title => nytimes_title,
+#   :fox_link => fox_link,
+#   :fox_title => fox_title,
+#   :nypost_link => nypost_link,
+#   :nypost_title => nypost_title
+#   )
+
+#   @article.save
+# end
+
