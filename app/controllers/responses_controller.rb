@@ -2,15 +2,22 @@ class ResponsesController < ApplicationController
 
 	def new
 		@quiz = Quiz.find(params[:quiz_id])
-		@response = Response.new
+		@responses = Response.new
 	end
 
 	def create
-		quiz_result = []
-		@responses = params[:response]
-		binding.pry
-		quiz_result << @responses[0..5]
-		quiz_result.flatten
+		@responses = (params[:response])
+		@responses.each_slice(4) do |a|
+			@response = Response.new(
+				binding.pry
+			# :quiz_id => a[0],
+			# :user_id => a[1],
+			# :question_id => a[2],
+			# :answer_id => a[3],
+			)
+			@response.save
+		end
+
 		
 		render :show
 	end

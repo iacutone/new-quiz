@@ -9,6 +9,6 @@
 #
 
 class Quiz < ActiveRecord::Base
-	attr_accessible :name, :questions_attributes
+	attr_accessible :name
 	has_many :questions
 end

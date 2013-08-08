@@ -1,5 +1,8 @@
 NewQuiz::Application.routes.draw do
 	
+  resources :results
+
+
   resources :responses
 
 

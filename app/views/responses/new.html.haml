@@ -1,6 +1,6 @@
 = @quiz.name
 %br
-= form_for @response do |f|
+= form_for @responses do |f|
 	- @quiz.questions.each do |question|
 		= question.content
 		%br
@@ -8,15 +8,17 @@
 			= answer.content
 			%br
 			.show_questions
-				= Response.new do |q|
-					= f.label "Correct Answer?"
-					= f.check_box q.result
+				- Response.new do |q|
+					= fields_for :results do |builder|
+						= builder.label "Correct Answer?"
+						= builder.check_box :content
+						= builder.hidden_field :response_id, :value => answer.id
 					= f.hidden_field q.quiz_id, :value => @quiz.id
-					= f.hidden_field params[:user_id], :value => current_user.id
-					= f.hidden_field params[:question_id], :value => question.id
+					= f.hidden_field q.user_id, :value => current_user.id
+					= f.hidden_field q.question_id, :value => question.id
 					= f.hidden_field q.answer_id, :value => answer.id
-		
-	= f.submit "Submit"
+					
+	= f.submit
 
 
 
