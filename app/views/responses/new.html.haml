@@ -1,3 +1,4 @@
+%h2 Review Quiz
 = @quiz.name
 %br
 = form_for @responses do |f|
@@ -6,19 +7,19 @@
 		%br
 		- question.answers.each do |answer|
 			= answer.content
+			- Response.new do |attr|
+				= f.hidden_field attr.quiz_id, :value => @quiz.id
+				= f.hidden_field attr.user_id, :value => current_user.id
+				= f.hidden_field attr.question_id, :value => question.id
+				= f.hidden_field attr.answer_id, :value => answer.id
+				= f.hidden_field attr.response_question, :value => question.content
+				= f.hidden_field attr.response_answer, :value => answer.content
+				= f.hidden_field attr.answer_choice, :value => answer.is_correct
 			%br
-			.show_questions
-				- Response.new do |q|
-					= fields_for :results do |builder|
-						= builder.label "Correct Answer?"
-						= builder.check_box :content
-						= builder.hidden_field :response_id, :value => answer.id
-					= f.hidden_field q.quiz_id, :value => @quiz.id
-					= f.hidden_field q.user_id, :value => current_user.id
-					= f.hidden_field q.question_id, :value => question.id
-					= f.hidden_field q.answer_id, :value => answer.id
+
+
 					
-	= f.submit
+	= f.submit "Take Quiz"
 
 
 

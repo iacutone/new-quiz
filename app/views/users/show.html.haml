@@ -1,1 +1,6 @@
-show.html.haml
+- @responses.each do |response|
+	= if response.answer_choice == response.choice
+		- @i = 0
+		- @i += 1
+Grade
+= @i

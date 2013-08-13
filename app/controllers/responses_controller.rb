@@ -3,57 +3,44 @@ class ResponsesController < ApplicationController
 	def new
 		@quiz = Quiz.find(params[:quiz_id])
 		@responses = Response.new
+		# @results = @responses.results.build
 	end
 
 	def create
 		@responses = (params[:response])
-		@responses.each_slice(4) do |a|
+		@responses.each_slice(7) do |attr|
 			@response = Response.new(
-				binding.pry
-			# :quiz_id => a[0],
-			# :user_id => a[1],
-			# :question_id => a[2],
-			# :answer_id => a[3],
+			 :quiz_id => attr[0],
+			 :user_id => attr[1],
+			 :question_id => attr[2],
+			 :answer_id => attr[3],
+			 :response_question => attr[4],
+			 :response_answer => attr[5],
+			 :answer_choice => attr[6]
 			)
 			@response.save
 		end
-
-		
-		render :show
-	end
-
-	def show
-		@response = Response.find(params[:id])
+		redirect_to responses_path
 	end
 
 	def index
 		@responses = Response.all
 	end
+
+	def update
+		@responses = Response.find(params[:id])
+		if @responses.update_attributes(params[:response])
+			redirect_to responses_path
+		else
+			render :edit
+		end
+	end
+
+	def answer
+		Response.update_all({choice: true}, {id: params[:choice_ids]})
+		redirect_to user_path(current_user)
+	end
+
 end
 
-# [7/30/13 2:21:12 PM] Blake Johnson: params[:responses]
-# [7/30/13 2:21:18 PM] Blake Johnson: that should be an array
-# [7/30/13 2:21:20 PM] Blake Johnson: s
-# [7/30/13 2:21:20 PM] Blake Johnson: of response
-# [7/30/13 2:21:30 PM] Blake Johnson: params[:responses].each do |response|
-# [7/30/13 2:21:38 PM] Blake Johnson: Response.new(params[:response])
-# [7/30/13 2:22:05 PM] Blake Johnson: what is the actual response
-# [7/30/13 2:22:15 PM] Blake Johnson: what question is the response associated with
-# [7/30/13 2:22:20 PM] Blake Johnson: and which user is taking the quiz
-# [7/30/13 2:22:54 PM] Blake Johnson: question
-# [7/30/13 2:22:56 PM] Blake Johnson: one answer
-
-#   @article = Article.new(
-#   :huff_link => huff_link,
-#   :huff_title => huff_title,
-#   :nytimes_link => nytimes_link,
-#   :nytimes_title => nytimes_title,
-#   :fox_link => fox_link,
-#   :fox_title => fox_title,
-#   :nypost_link => nypost_link,
-#   :nypost_title => nypost_title
-#   )
-
-#   @article.save
-# end
 

@@ -1,11 +1,11 @@
 NewQuiz::Application.routes.draw do
 	
   resources :results
-
-
-  resources :responses
-
-
+  resources :responses do
+    collection do
+      put :answer
+    end
+  end
   resources :users
 	resources :answers
   resources :questions

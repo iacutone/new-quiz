@@ -1,11 +1,14 @@
-%h2 Students Index
-- @responses.each do |response|
-	= response.user.name
-	Grade:
-	= response.number_correct
-	\/
-	= response.number_of_questions
-	= link_to "Back", response_path(response)
+%h2 Quiz
+= form_tag answer_responses_path, method: :put do
+	- @responses.each do |response|
+		= response.response_question
+		%br
+		= response.response_answer
+		%br
+		= check_box_tag 'choice_ids[]', response.id
+		%br
+
+	= submit_tag "Submit"
 	%br
 
 

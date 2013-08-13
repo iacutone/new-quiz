@@ -14,4 +14,11 @@ class UsersController < ApplicationController
 			render :new
 		end
 	end
+
+	def show
+		@responses = Response.all
+	end
+
+	def index
+	end
 end
