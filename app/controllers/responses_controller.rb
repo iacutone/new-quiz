@@ -24,7 +24,7 @@ class ResponsesController < ApplicationController
 	end
 
 	def index
-		@responses = Response.all
+		@responses = Response.where(:user_id == current_user)
 	end
 
 	def update
@@ -40,7 +40,6 @@ class ResponsesController < ApplicationController
 		Response.update_all({choice: true}, {id: params[:choice_ids]})
 		redirect_to user_path(current_user)
 	end
-
 end
 
 

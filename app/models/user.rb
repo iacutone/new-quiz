@@ -16,8 +16,4 @@ class User < ActiveRecord::Base
   attr_accessible :name, :email, :password, :password_confirmation, :student, :teacher, :responses_attributes
 
   has_many :responses
-
-  def score
-  end
-  
 end

@@ -2,6 +2,7 @@ class QuestionsController < ApplicationController
 
 	def new
 		@quiz = Quiz.find(params[:quiz_id])
+		@question = Question.new
 		@answer = @question.answers.build
 		@answer.save
 	end

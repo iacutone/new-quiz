@@ -1,6 +1,6 @@
-- @responses.each do |response|
-	= if response.answer_choice == response.choice
-		- @i = 0
-		- @i += 1
+- score(@responses)
+
 Grade
-= @i
+= @user_choice
+= @correct_choice
+
