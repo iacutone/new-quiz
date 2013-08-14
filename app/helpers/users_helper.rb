@@ -2,17 +2,21 @@ module UsersHelper
 	
 	def score(data)
 		@data = data
-		@number_of_questions = @data.size
 		@user_choice = []
 		@correct_choice = []
+		@num_questions = []
 		@data.each do |response|
 			@user_choice << response.answer_choice
 			@correct_choice << response.choice
-		end 
+			@num_questions << response.question_id
+		end
+		@i = 0
+		@user_choice.each do |num|
+			@correct_choice.each do |correct|
+				if num == true && correct == true
+					@i += 1
+				end
+			end
+		end
 	end
-
-	def grade(questions, num_correct)
-		
-	end
-
 end
