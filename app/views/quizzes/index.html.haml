@@ -1,14 +1,13 @@
 %h2 All Quizzes
-
-- @i = 1
-
 - @quizzes.each do |quiz|
 	= @i
 	= quiz.name
 	= link_to 'Show', quiz
-	= link_to 'Edit', edit_quiz_path(quiz)
-	= link_to 'Destroy', quiz, method: :delete, data: { confirm: 'Are you sure?' }
-	- @i += 1
+	- if allow? 'quizzes', 'edit'
+		= link_to 'Edit', edit_quiz_path(quiz)
+	-if allow? 'quizzes', 'destroy'
+		= link_to 'Destroy', quiz, method: :delete, data: { confirm: 'Are you sure?' }
 	%br
 
-= link_to "New Quiz", new_quiz_path
+- if allow? 'quizzes', 'new'
+	= link_to "New Quiz", new_quiz_path

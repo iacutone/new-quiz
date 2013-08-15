@@ -1,5 +1,4 @@
 module UsersHelper
-	
 	def score(data)
 		@data = data
 		@user_choice = []

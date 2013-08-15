@@ -1,5 +1,4 @@
 class ResponsesController < ApplicationController
-
 	def new
 		@quiz = Quiz.find(params[:quiz_id])
 		@responses = Response.new

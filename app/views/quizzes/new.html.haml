@@ -1,6 +1,8 @@
-%h2 New Quiz
-= render 'quizzes/form'
+- if allow? 'quizzes', 'new'
+	%h2 Create a new quiz or select quizzes.
+	= render 'quizzes/form'
 %br
+
 = link_to 'Quizzes', quizzes_path
 
 
