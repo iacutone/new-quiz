@@ -38,4 +38,9 @@ class QuizzesController < ApplicationController
 		@quiz.destroy
 		redirect_to quizzes_path
 	end
+
+	def show_quiz
+		Quiz.update_all({show_quiz: true}, {id: params[:show_quiz_ids]})
+		redirect_to quizzes_path
+	end
 end

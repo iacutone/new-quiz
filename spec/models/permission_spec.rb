@@ -7,8 +7,15 @@ RSpec::Matchers.define :allow do |*args|
 end
 
 describe Permission do 
-	describe 'as user' do
-		subject { Permission.new(build(:user, teacher: false)) }
+	describe 'student' do
+		  before do
+    @user = User.new(name: "Example User", email: "user@example.com", 
+                     password: "foobar", teacher: false)
+  end
+
+  subject { @user }
+		subject { Permission.new(@user) }
+		binding.pry
 		it { should allow('quizzes', 'index') }
 		it { should allow('quizzes', 'show') }
 		it { should_not allow('quizzes', 'new') }
@@ -19,6 +26,7 @@ describe Permission do
 	end
 
 	describe 'teacher' do
+
 		subject { Permission.new(build(:user, teacher: true)) }
 		it { should allow('quizzes', 'index') }
 		it { should allow('quizzes', 'show') }

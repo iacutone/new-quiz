@@ -15,4 +15,8 @@ jQuery ->
 		$(this).before($(this).data('fields').replace(regexp, time))
 		event.preventDefault()
 
+	$('form').on 'click', '.checker', (event) ->
+		$(this).each('.checker').hide()
+		event.preventDefault()
+
 

@@ -1,15 +1,19 @@
 NewQuiz::Application.routes.draw do
-	
-  resources :results
   resources :responses do
     collection do
       put :answer
     end
   end
+
+  resources :quizzes do 
+    collection do 
+      put :show_quiz
+    end
+  end
+
   resources :users
 	resources :answers
   resources :questions
-  resources :quizzes
   resources :sessions, only: [:new, :create, :destroy]
 
 	match '/signup',  to: 'users#new'

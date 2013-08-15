@@ -1,5 +1,5 @@
 %fieldset
 	= f.label :content, "Answer"
 	= f.text_field :content
-	= f.label "Correct answer?"
-	= f.check_box :is_correct
+	= f.label "Correct answer?", class: 'checker_label'
+	= f.check_box :is_correct, class: 'checker'

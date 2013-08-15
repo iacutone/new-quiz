@@ -1,10 +1,13 @@
 FactoryGirl.define do
-  factory :question do
+  factory :quizzes do
     name "eric"
+    email 'eric'
+    teacher false
   end
 
   factory :user do
-    sequence(:email) { |n| "foo#{n}@example.com" }
-    password "eric"
+    name "eric"
+    email 'eric'
+    teacher false
   end
 end

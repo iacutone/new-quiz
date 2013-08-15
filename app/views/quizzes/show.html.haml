@@ -1,5 +1,4 @@
-%h2
-	= @quiz.name
+= @quiz.name
 %br
 - @quiz.questions.each do |question|
 	= question.content
@@ -13,4 +12,5 @@
 
 = link_to "Back", quizzes_path
 = link_to "Add a Question", new_question_path(:quiz_id => @quiz.id)
-= link_to "Take the Quiz", new_response_path(:quiz_id => @quiz.id)
+- if @quiz.show_quiz == true
+	= link_to "Take the Quiz", new_response_path(:quiz_id => @quiz.id)
