@@ -13,10 +13,18 @@ jQuery ->
 		time = new Date().getTime()
 		regexp = new RegExp($(this).data('id'), 'g')
 		$(this).before($(this).data('fields').replace(regexp, time))
-		event.preventDefault()
 
 	$('form').on 'click', '.checker', (event) ->
-		$(this).each('.checker').hide()
-		event.preventDefault()
+		boxes = $(":checkbox:checked")
+		nboxes = $(":checkbox:not(:checked)")
+		if boxes.length == 1
+			$('.checker_label').hide()
+			nboxes.hide()
+		if boxes.length == 0
+			$('.checker_label').show()
+			nboxes.show()
 
+
+
+		
 

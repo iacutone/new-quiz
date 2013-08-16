@@ -6,18 +6,18 @@
 			= check_box_tag 'show_quiz_ids[]', quiz.id
 		- if quiz.show_quiz == true
 			%color_change
+				= link_to "Take Quiz", quiz
 				= quiz.name
 		- else
+			= link_to "Click here to add a question.", quiz
 			= quiz.name
 		%br
-		= link_to 'Show', quiz
-
 		- if allow? 'quizzes', 'edit'
 			= link_to 'Edit', edit_quiz_path(quiz)
-		-if allow? 'quizzes', 'destroy'
+		- if allow? 'quizzes', 'destroy'
 			= link_to 'Destroy', quiz, method: :delete, data: { confirm: 'Are you sure?' }
 		%br
-	- if allow? 'quizzes', 'edit'
+	- if allow? 'quizzes', 'update'
 		%h5 Click Check box and submit if 'Quiz Ready?' to display to students
 		= submit_tag "Quiz Ready?"
 	%br

@@ -1,12 +1,11 @@
-%h2 Review Quiz
 = @quiz.name
 %br
 = form_for @responses do |f|
 	- @quiz.questions.each do |question|
-		= question.content
+		- question.content
 		%br
 		- question.answers.each do |answer|
-			= answer.content
+			- answer.content
 			- Response.new do |attr|
 				= f.hidden_field attr.quiz_id, :value => @quiz.id
 				= f.hidden_field attr.user_id, :value => current_user.id
@@ -15,11 +14,7 @@
 				= f.hidden_field attr.response_question, :value => question.content
 				= f.hidden_field attr.response_answer, :value => answer.content
 				= f.hidden_field attr.answer_choice, :value => answer.is_correct
-			%br
-
-
-					
-	= f.submit "Take Quiz"
-
+				
+	= f.submit "Take Quiz!"
 
 
