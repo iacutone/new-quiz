@@ -17,9 +17,10 @@ class UsersController < ApplicationController
 	end
 
 	def show
-		@responses = Response.all
+		@responses = Response.where(:user_id == current_user)
 	end
 
 	def index
+		@responses = Response.all
 	end
 end

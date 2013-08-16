@@ -9,12 +9,12 @@ module UsersHelper
 			@correct_choice << response.choice
 			@num_questions << response.question_id
 		end
-		@i = 0
-		@user_choice.each do |num|
-			@correct_choice.each do |correct|
-				if num == true && correct == true
-					@i += 1
-				end
+
+		@num_correct = 0
+		@intersect = @user_choice | @correct_choice
+		@intersect.each do |correct|
+			if correct == true
+				@num_correct += 1
 			end
 		end
 	end
