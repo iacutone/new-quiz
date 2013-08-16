@@ -11,9 +11,9 @@ module UsersHelper
 		end
 
 		@num_correct = 0
-		@intersect = @user_choice | @correct_choice
-		@intersect.each do |correct|
-			if correct == true
+		@compare = @user_choice.zip(@correct_choice)
+		@compare.each do |choice|
+			if choice[0] == true && choice[1] == true
 				@num_correct += 1
 			end
 		end

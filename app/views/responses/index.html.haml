@@ -1,14 +1,14 @@
 %h2 Quiz
 = form_tag answer_responses_path, method: :put do
 	- @responses.each do |response|
-		= response.response_question
-		%br
-		= response.response_answer
-		%br
-		= check_box_tag 'choice_ids[]', response.id
+		%question
+			= response.response_question
+		%answer
+			= response.response_answer
+		%checker
+			= check_box_tag 'choice_ids[]', response.id
 		%br
 
 	= submit_tag "Submit"
-	%br
 
 
