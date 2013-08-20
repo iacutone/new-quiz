@@ -3,7 +3,7 @@
 - if allow? 'quizzes', 'new'
 	- @quiz.questions.each do |question|
 		= question.content
-		-if allow? 'quizzes', 'destroy'
+		- if allow? 'quizzes', 'destroy'
 			= link_to 'Delete Question', question, method: :delete, data: { confirm: 'Are you sure?' }
 		%br
 		- question.answers.each do |answer|

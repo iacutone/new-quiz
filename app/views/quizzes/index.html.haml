@@ -3,14 +3,19 @@
 = form_tag show_quiz_quizzes_path, method: :put do
 	- @quizzes.each do |quiz|
 		- if allow? 'quizzes', 'edit'
-			= check_box_tag 'show_quiz_ids[]', quiz.id
+			- if quiz.show_quiz == false
+				= check_box_tag 'show_quiz_ids[]', quiz.id
 		- if quiz.show_quiz == true
-			%color_change
-				= link_to "Take Quiz", quiz
+			= link_to "Take Quiz", quiz
+			= quiz.name
+		- elsif
+			- if allow? 'quizzes', 'edit'
+				= link_to "Click here to add a question or edit quiz.", quiz
 				= quiz.name
 		- else
 			= link_to "Click here to add a question.", quiz
 			= quiz.name
+
 		%br
 		- if allow? 'quizzes', 'edit'
 			= link_to 'Edit', edit_quiz_path(quiz)

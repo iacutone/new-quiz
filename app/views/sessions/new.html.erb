@@ -1,16 +1,20 @@
-<h2>Login</h2>
+<div class='wrapper'>
+	<div class='row-fluid'>
+		<h2>Login</h2>
 
-<%= form_tag sessions_path do %>
-  <div>
-      <%= label_tag :email %><br />
-      <%= text_field_tag :email %>
-  </div>
-  <div>
-    <%= label_tag :password %><br />
-    <%= password_field_tag :password %>
-  </div>
-  <button type="submit"class="actions">Log In</button>
-<% end %>
+		<%= form_tag sessions_path do %>
+		  <div>
+		      <%= label_tag :email %><br />
+		      <%= text_field_tag :email %>
+		  </div>
+		  <div>
+		    <%= label_tag :password %><br />
+		    <%= password_field_tag :password %>
+		  </div>
+		  <button type="submit"class="actions">Log In</button>
+		<% end %>
 
-<%= link_to "Sign Up", signup_path %>
+		<%= link_to "Sign Up", signup_path %>
+	</div>
+</div>
   

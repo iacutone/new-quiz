@@ -1,11 +1,8 @@
-$('form').on 'click', '.checker', (event) ->
+$(document).ready ->
 	boxes = $(":checkbox:checked")
 	nboxes = $(":checkbox:not(:checked)")
-	if boxes.length == 1
-		$('.answer').hide()
-		$('.question').hide()
-		nboxes.hide()
-	if boxes.length == 0
-		$('.answer').show()
-		$('.question').show()
-		nboxes.show()
+	question = $('question').get()
+	console.log(question)
+	$(':checkbox:checked').click -> 
+		
+

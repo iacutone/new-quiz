@@ -5,8 +5,7 @@
 			= response.response_question
 		%answer
 			= response.response_answer
-		%checker
-			= check_box_tag 'choice_ids[]', response.id
+		= check_box_tag 'choice_ids[]', response.id, class: 'question'
 		%br
 
 	= submit_tag "Submit"
