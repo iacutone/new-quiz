@@ -17,7 +17,7 @@ class UsersController < ApplicationController
 	end
 
 	def show
-		@response = Response.where(:user_id == current_user)
+		@response = Response.where('user_id = ? AND quiz_taken = ?', current_user.id, false)
 	end
 
 	def index
