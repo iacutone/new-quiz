@@ -1,18 +1,20 @@
-= @quiz.name
-%br
-- if allow? 'quizzes', 'new'
-	- @quiz.questions.each do |question|
-		= question.content
-		- if allow? 'quizzes', 'destroy'
-			= link_to 'Delete Question', question, method: :delete, data: { confirm: 'Are you sure?' }
-		%br
-		- question.answers.each do |answer|
-			= answer.content
+%div.row-fluid
+	= @quiz.name
+	%br
+	- if allow? 'quizzes', 'new'
+		- @quiz.questions.each do |question|
+			= question.content
+			- if allow? 'quizzes', 'destroy'
+				= link_to 'Delete Question', question, method: :delete, data: { confirm: 'Are you sure?' }
 			%br
-		%br
+			- question.answers.each do |answer|
+				= answer.content
+				%br
+			%br
 
-= link_to "Back", quizzes_path
-- if @quiz.show_quiz == false
-	= link_to "Add a Question", new_question_path(:quiz_id => @quiz.id)
-- if @quiz.show_quiz == true
-	= link_to "Take the Quiz", new_response_path(:quiz_id => @quiz.id)
+	= link_to "Back", quizzes_path
+	|
+	- if @quiz.show_quiz == false
+		= link_to "Add a Question", new_question_path(:quiz_id => @quiz.id)
+	- if @quiz.show_quiz == true
+		= link_to "Take the Quiz", new_response_path(:quiz_id => @quiz.id)

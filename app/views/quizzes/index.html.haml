@@ -1,34 +1,34 @@
-%h2 All Quizzes
-
-= form_tag show_quiz_quizzes_path, method: :put do
-	- @quizzes.each do |quiz|
-		- if allow? 'quizzes', 'edit'
-			- if quiz.show_quiz == false
-				= check_box_tag 'show_quiz_ids[]', quiz.id
-		- if quiz.show_quiz == true
-			= link_to "Take Quiz", quiz
-			= quiz.name
-		- elsif
+%div.row-fluid
+	%h2 All Quizzes
+	= form_tag show_quiz_quizzes_path, method: :put do
+		- @quizzes.each do |quiz|
 			- if allow? 'quizzes', 'edit'
-				= link_to "Click here to add a question or edit quiz.", quiz
+				- if quiz.show_quiz == false
+					= check_box_tag 'show_quiz_ids[]', quiz.id
+			- if quiz.show_quiz == true
 				= quiz.name
-		- else
-			= link_to "Click here to add a question.", quiz
-			= quiz.name
-
+				= link_to "Take Quiz", quiz
+				|
+			- elsif
+				- if allow? 'quizzes', 'edit'
+					= link_to "Click here to add a question or edit quiz.", quiz
+					= quiz.name
+			- else
+				= link_to "Click here to add a question.", quiz
+				= quiz.name
+			- if allow? 'quizzes', 'edit'
+				= link_to 'Edit', edit_quiz_path(quiz)
+				|
+			- if allow? 'quizzes', 'destroy'
+				= link_to 'Destroy', quiz, method: :delete, data: { confirm: 'Are you sure?' }
+			%br
+		- if allow? 'quizzes', 'update'
+			%p Click check box and submit with Quiz Ready? button to show to students.
+			= submit_tag "Quiz Ready?"
 		%br
-		- if allow? 'quizzes', 'edit'
-			= link_to 'Edit', edit_quiz_path(quiz)
-		- if allow? 'quizzes', 'destroy'
-			= link_to 'Destroy', quiz, method: :delete, data: { confirm: 'Are you sure?' }
-		%br
-	- if allow? 'quizzes', 'update'
-		%h5 Click Check box and submit if 'Quiz Ready?' to display to students
-		= submit_tag "Quiz Ready?"
-	%br
 
-	- if allow? 'quizzes', 'new'
-		= link_to "New Quiz", new_quiz_path
+		- if allow? 'quizzes', 'new'
+			= link_to "New Quiz", new_quiz_path
 
 
 

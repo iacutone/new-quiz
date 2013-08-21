@@ -1,11 +1,12 @@
-- score(@responses)
+%div.row-fluid
+	- score(@responses)
 
-Grade:
-%br
-= @num_correct
-out of
-= @num_questions.uniq.size
-correct
+	Grade:
+	%br
+	= @num_correct
+	out of
+	= @num_questions.uniq.size
+	correct
 
-/ - if allow? 'users', 'index'
-= link_to 'Show all Quiz Scores', users_path
+ - if allow? 'users', 'index'
+	= link_to 'All Scores', users_path

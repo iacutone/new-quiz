@@ -1,5 +1,7 @@
-= form_for @quiz do |f|
-	= f.label "Quiz Name"
-	= f.text_field :name
-
-	= f.submit
+%div.wrapper
+	%div.row-fluid
+		= form_for @quiz do |f|
+			= f.label "Create a new Quiz"
+			= f.text_field :name
+			%br
+			= f.submit "Submit"

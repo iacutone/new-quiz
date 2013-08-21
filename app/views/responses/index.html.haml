@@ -1,13 +1,14 @@
-%h2 Quiz
-= form_tag answer_responses_path, method: :put do
-	- @responses.each do |response|
-		%question
-			= response.response_question
-		%answer
-			= response.response_answer
-		= check_box_tag 'choice_ids[]', response.id, class: 'question'
-		%br
+%div.row-fluid
+	%h2 Quiz
+	= form_tag answer_responses_path, method: :put do
+		- @responses.each do |response|
+			%question
+				= response.response_question
+			%answer
+				= response.response_answer
+			= check_box_tag 'choice_ids[]', response.id, class: 'question'
+			%br
 
-	= submit_tag "Submit"
+		= submit_tag "Submit"
 
 

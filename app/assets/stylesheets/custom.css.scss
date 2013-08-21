@@ -1,0 +1,29 @@
+@import "bootstrap";
+
+/* mixins, variables, etc. */
+
+$grayMediumLight: #EAEAEA;
+$grayMediumDark: #B7B7B7;
+$grayDark: #6A6A6A;
+
+.navbar-inner {
+	background-image: none;
+	background: linear-gradient(to bottom, $grayMediumDark, $grayMediumLight);
+	border-bottom: 4px solid #6A6A6A;
+}
+
+.row-fluid {
+	font-family: 'Roboto', sans-serif;
+	text-align: center;
+	background-color: $grayMediumLight;
+}
+
+.wrapper {
+	font-family: 'Roboto', sans-serif;
+	text-align: center;
+	background-color: $grayMediumLight;
+}
+
+p {
+	padding: 10px;
+}
