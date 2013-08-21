@@ -1,14 +1,15 @@
 %div.row-fluid
-	- score(@response)
-
-	Grade:
-	%br
-	= @num_correct
-	out of
-	= @num_questions.uniq.size
-	correct
-	%br
-	
-	= link_to "All Quizzes", quizzes_path
-	- if allow? 'users', 'index'
-		= link_to 'All Scores', users_path
+	= form_tag quiz_taken_users_path, method: :put do
+		- score(@response)
+		
+		Grade:
+		%br
+		= @num_correct
+		out of
+		= @num_questions.uniq.size
+		correct
+		%br
+		- @response.each do |response|
+			= hidden_field_tag 'quiz_taken_ids[]', response.id
+		= submit_tag "Back to Quizzes"
+		

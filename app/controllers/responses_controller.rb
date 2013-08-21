@@ -22,7 +22,7 @@ class ResponsesController < ApplicationController
 	end
 
 	def index
-		@responses = Response.where(:user_id == current_user)
+		@responses = Response.where("user_id = ? AND quiz_taken = ?", current_user.id, false)
 	end
 
 	def update

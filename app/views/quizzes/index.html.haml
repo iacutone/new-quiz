@@ -8,7 +8,6 @@
 			- if quiz.show_quiz == true
 				= quiz.name
 				= link_to "Take Quiz", quiz
-				|
 			- elsif
 				- if allow? 'quizzes', 'edit'
 					= link_to "Click here to add a question or edit quiz.", quiz
@@ -29,6 +28,8 @@
 
 		- if allow? 'quizzes', 'new'
 			= link_to "New Quiz", new_quiz_path
+			|
+			= link_to "All Quizzes", quizzes_path
 
 
 

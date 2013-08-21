@@ -11,7 +11,12 @@ NewQuiz::Application.routes.draw do
     end
   end
 
-  resources :users
+  resources :users do 
+    collection do 
+      put :quiz_taken
+    end
+  end
+  
 	resources :answers
   resources :questions
   resources :sessions, only: [:new, :create, :destroy]

@@ -21,11 +21,15 @@ class UsersController < ApplicationController
 	end
 
 	def index
-		# @respponses = Response.all
 		@users = User.all
     # @stats = Stat.find_all_by_user_id(params[:id]).count
     # @articles = Article.find_all_by_user_id(params[:id]).count
     # @opens = Stat.where("user_id =? AND opens = 1", params[:id]).count
     # @clicks = Stat.where("user_id =? AND clicks = 1", params[:id]).count
+	end
+
+	def quiz_taken
+		Response.update_all({quiz_taken: true}, {id: params[:quiz_taken_ids]})
+		redirect_to quizzes_path
 	end
 end
