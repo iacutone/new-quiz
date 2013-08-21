@@ -1,6 +1,7 @@
 class Permission < Struct.new(:user)
 	def allow?(controller, action)
 		return true if controller == 'sessions'
+		return true if controller == 'users' && action.in?(%w[new])
 		if user
 			return true if controller == 'users' 
 			return true if controller == 'responses' 
