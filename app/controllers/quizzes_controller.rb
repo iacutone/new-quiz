@@ -1,4 +1,5 @@
 class QuizzesController < ApplicationController
+	include QuizzesHelper
 	def new
 		@quiz = Quiz.new
 	end
@@ -27,7 +28,6 @@ class QuizzesController < ApplicationController
 
 	def index
 		@quizzes = Quiz.all
-		@show_quiz = Response.where('show_quiz', false)
 	end
 
 	def edit

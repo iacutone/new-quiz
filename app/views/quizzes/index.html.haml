@@ -2,12 +2,14 @@
 	%h2 All Quizzes
 	= form_tag show_quiz_quizzes_path, method: :put do
 		- @quizzes.each do |quiz|
+			- can_take(quiz)
 			- if allow? 'quizzes', 'edit'
 				- if quiz.show_quiz == false
 					= check_box_tag 'show_quiz_ids[]', quiz.id
 			- if quiz.show_quiz == true
-				= quiz.name
-				= link_to "Take Quiz", quiz
+				-if @show_quiz_responses == false
+					= quiz.name
+					= link_to "Take Quiz", quiz
 			- elsif
 				- if allow? 'quizzes', 'edit'
 					= link_to "Click here to add a question or edit quiz.", quiz

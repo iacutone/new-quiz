@@ -22,10 +22,6 @@ class UsersController < ApplicationController
 
 	def index
 		@users = User.all
-    # @stats = Stat.find_all_by_user_id(params[:id]).count
-    # @articles = Article.find_all_by_user_id(params[:id]).count
-    # @opens = Stat.where("user_id =? AND opens = 1", params[:id]).count
-    # @clicks = Stat.where("user_id =? AND clicks = 1", params[:id]).count
 	end
 
 	def quiz_taken
