@@ -1,5 +1,5 @@
 %div.row-fluid
-	- score(@responses)
+	- score(@response)
 
 	Grade:
 	%br
@@ -7,6 +7,8 @@
 	out of
 	= @num_questions.uniq.size
 	correct
-
- - if allow? 'users', 'index'
-	= link_to 'All Scores', users_path
+	%br
+	
+	= link_to "All Quizzes", quizzes_path
+	- if allow? 'users', 'index'
+		= link_to 'All Scores', users_path

@@ -1,1 +1,4 @@
-A quiz app.
+** Quiz App **
+***
+
+An app that allows a teacher to pick a quiz topic.  Students have the ability to create question and answer choices.  Then, at the teacher's discretion, students can take available quizzes.

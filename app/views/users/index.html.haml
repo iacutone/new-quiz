@@ -1,8 +1,19 @@
-%table 
-	%thead
-		%tr
-			%th Name
-			%th Grade
-	%tbody
-		%tr
-			%td
+%div.row-fluid
+	%table 
+		%thead
+			%tr
+				%th Name
+				%th Number Correct
+				%th Number of Questions
+				%th Grade
+				%th Quiz Name
+		%tbody
+			- @users.each do |user|
+				%tr
+					%th= user.name
+					- score(user.responses)
+					%th= @num_correct
+					%th= @num_questions.uniq.size
+					%th= (@num_correct/@num_questions.uniq.size).to_f unless 0
+					%th= user.responses.quiz_id
+

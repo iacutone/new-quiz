@@ -16,4 +16,5 @@ class User < ActiveRecord::Base
   attr_accessible :name, :email, :password, :password_confirmation, :student, :teacher, :responses_attributes
 
   has_many :responses
+  has_many :quizzes, :through => :responses
 end
